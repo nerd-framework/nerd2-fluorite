@@ -131,11 +131,4 @@ class Connection
     {
         return $this->pdo->quote($string, $parameterType);
     }
-
-    public function __destruct()
-    {
-        if (config("app.debug")) {
-            error_log("Queries: " . $this->queries);
-        }
-    }
 }

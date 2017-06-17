@@ -2,9 +2,7 @@
 
 namespace Nerd2\Fluorite\DB;
 
-
-use Funky\Option\Option;
-use Traversable;
+use Nerd2\Fluorite\Utilities\Option\Option;
 
 abstract class ResultSet implements \Countable, \IteratorAggregate
 {
@@ -63,7 +61,7 @@ abstract class ResultSet implements \Countable, \IteratorAggregate
      */
     public function takeOneColumn($column = 0)
     {
-        return Option::wrap($this->fetchOneColumn($column), false);
+        return Option::ofDeceptive($this->fetchOneColumn($column));
     }
 
     /**
@@ -73,7 +71,7 @@ abstract class ResultSet implements \Countable, \IteratorAggregate
      */
     public function takeOneRow()
     {
-        return Option::wrap($this->fetchOneRow(), false);
+        return Option::ofDeceptive($this->fetchOneRow());
     }
 
     /**
