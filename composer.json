@@ -10,6 +10,9 @@
   "autoload": {
     "psr-4": {
       "": "src/"
-    }
+    },
+    "files": [
+      "src/Nerd2/Fluorite/helper.php"
+    ]
   }
 }
