@@ -9,7 +9,7 @@
 namespace Nerd2\Fluorite\ORM\Relations;
 
 
-use Kote\Fluorite\Builder\SelectQuery;
+use Nerd2\Fluorite\Builder\SelectQuery;
 use Nerd2\Fluorite\ORM\Model;
 use Nerd2\Fluorite\ORM\Collections\ModelCollection;
 use Nerd2\Fluorite\ORM\ModelWithRelations;
