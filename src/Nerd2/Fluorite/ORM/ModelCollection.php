@@ -7,8 +7,8 @@
 
 namespace Nerd2\Fluorite\ORM;
 
-use Slang\Collections\Collection;
 use Nerd2\Fluorite\ORM\Relations\Relation;
+use Nerd2\Utilities\Collections\Collection;
 
 class ModelCollection extends Collection
 {

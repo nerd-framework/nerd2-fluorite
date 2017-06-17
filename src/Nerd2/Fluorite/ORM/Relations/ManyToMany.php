@@ -8,9 +8,9 @@
 
 namespace Nerd2\Fluorite\ORM\Relations;
 
-use Kote\Fluorite\Builder\SelectQuery;
-use function Kote\Fluorite\column;
-use function Kote\Fluorite\table;
+use Nerd2\Fluorite\Builder\SelectQuery;
+use function Nerd2\Fluorite\column;
+use function Nerd2\Fluorite\table;
 use function Lambda\l;
 use Nerd2\Fluorite\ORM\ModelCollection;
 use Nerd2\Fluorite\ORM\Model;
@@ -121,8 +121,6 @@ class ManyToMany extends Relation
 
     public function applyToCollection(ModelCollection $modelCollection, $relation, $rest = null)
     {
-        return;
-
         if (count($modelCollection) == 0) {
             return ;
         }
