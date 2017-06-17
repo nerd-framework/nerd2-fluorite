@@ -5,10 +5,11 @@
  * @time 10:39
  */
 
-namespace Nerd2\Fluorite\ORM;
+namespace Nerd2\Fluorite\ORM\Collections;
 
+use Nerd2\Fluorite\ORM\Model;
 use Nerd2\Fluorite\ORM\Relations\Relation;
-use Nerd2\Utilities\Collections\Collection;
+use Nerd2\Fluorite\ORM\Collections\Collection;
 
 class ModelCollection extends Collection
 {

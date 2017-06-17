@@ -5,7 +5,7 @@
  * @time 07:43
  */
 
-namespace Nerd2\Utilities\Collections;
+namespace Nerd2\Fluorite\ORM\Collections;
 
 class Collection implements \Countable, \ArrayAccess, \IteratorAggregate
 {

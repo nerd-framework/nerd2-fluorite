@@ -11,6 +11,7 @@ namespace Nerd2\Fluorite\ORM;
 
 use Funky\Option\Option;
 use Kote\Fluorite\Factory\Fluorite;
+use Nerd2\Fluorite\ORM\Collections\ModelCollection;
 
 class EntityManager
 {

@@ -4,6 +4,7 @@ namespace Nerd2\Fluorite\ORM;
 
 
 use Funky\Option\Option;
+use Nerd2\Fluorite\ORM\Collections\ModelCollection;
 
 class ActiveModel extends EventModel
 {

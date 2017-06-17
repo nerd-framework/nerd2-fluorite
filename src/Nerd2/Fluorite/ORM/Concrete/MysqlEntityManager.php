@@ -6,7 +6,7 @@ use Funky\Option\Option;
 use Nerd2\Fluorite\Factory\Fluorite;
 use Nerd2\Fluorite\ORM\EntityManager;
 use Nerd2\Fluorite\ORM\Model;
-use Nerd2\Fluorite\ORM\ModelCollection;
+use Nerd2\Fluorite\ORM\Collections\ModelCollection;
 
 class MysqlEntityManager implements EntityManager
 {

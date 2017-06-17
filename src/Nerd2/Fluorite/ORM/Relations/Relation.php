@@ -3,7 +3,7 @@
 namespace Nerd2\Fluorite\ORM\Relations;
 
 use Nerd2\Fluorite\ORM\Model;
-use Nerd2\Fluorite\ORM\ModelCollection;
+use Nerd2\Fluorite\ORM\Collections\ModelCollection;
 
 abstract class Relation
 {

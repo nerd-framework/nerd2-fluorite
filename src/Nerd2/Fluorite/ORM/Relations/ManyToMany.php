@@ -12,7 +12,7 @@ use Nerd2\Fluorite\Builder\SelectQuery;
 use function Nerd2\Fluorite\column;
 use function Nerd2\Fluorite\table;
 use function Lambda\l;
-use Nerd2\Fluorite\ORM\ModelCollection;
+use Nerd2\Fluorite\ORM\Collections\ModelCollection;
 use Nerd2\Fluorite\ORM\Model;
 use Nerd2\Fluorite\ORM\ModelWithRelations;
 
