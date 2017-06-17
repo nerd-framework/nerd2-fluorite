@@ -1,53 +1,109 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Roman
+ * Date: 21.03.16
+ * Time: 17:55
+ */
 
 namespace Nerd2\Fluorite\ORM;
 
-use Funky\Option\Option;
-use Slang\ORM\Model;
-use Slang\ORM\ModelCollection;
 
-interface EntityManager
+use Funky\Option\Option;
+use Kote\Fluorite\Factory\Fluorite;
+
+class EntityManager
 {
     /**
-     * Creates and returns new model.
-     *
-     * @param Model $model
-     * @param array $defaults
-     * @return Model
+     * @var Fluorite
      */
-    public function create($model, array $defaults);
+    private $fluorite;
 
     /**
-     * Finds entity using primary key.
+     * EntityManager constructor.
+     * @param Fluorite $fluorite
+     */
+    public function __construct(Fluorite $fluorite)
+    {
+        $this->fluorite = $fluorite;
+    }
+
+    /**
+     * @param Model $class
+     * @param mixed $primaryKey
+     * @return Option
+     * @throws Exceptions\ModelException
+     */
+    public function find($class, $primaryKey)
+    {
+        $query = $this->fluorite->selectFrom($class::getTableName())
+            ->filter($class::getPrimaryKey(), $primaryKey);
+
+        $object = $query->first();
+
+        return wrap($object, false)->map([$class, "hydrate"]);
+    }
+
+    /**
+     * Find entity using attribute value.
      *
-     * @param Model $model
-     * @param $pk
+     * @param Model $class
+     * @param $attr
+     * @param $value
      * @return Option
      */
-    public function find($model, $pk);
+    public function findUsingAttr($class, $attr, $value)
+    {
+        $query = $this->fluorite->selectFrom($class::getTableName())
+            ->filter($attr, $value);
+
+        $object = $query->first();
+
+        return wrap($object, false)->map([$class, "hydrate"]);
+    }
 
     /**
-     * Finds list of entities by primary keys.
+     * Find entity using callback query builder.
      *
-     * @param Model $model
-     * @param array $pk
+     * @param Model $class
+     * @param callable $callback(\SelectQuery)
+     * @return Option
+     */
+    public function findUsingCallback($class, $callback)
+    {
+        $callback($query = $this->fluorite->selectFrom($class::getTableName()));
+
+        $object = $query->first();
+
+        return wrap($object, false)->map([$class, "hydrate"]);
+    }
+
+    /**
+     * Get list of entities using attribute value.
+     *
+     * @param Model $class
+     * @param $attr
+     * @param $value
      * @return ModelCollection
      */
-    public function findAll($model, array $pk);
+    public function getListUsingAttr($class, $attr, $value)
+    {
+        $query = $this->fluorite->selectFrom($class::getTableName())->filter($attr, $value);
+
+        return (new ModelCollection($query->all()))->map([$class, "hydrate"]);
+    }
 
     /**
-     * Persists model changes if any.
+     * Get list of entities using callback query builder.
      *
-     * @param Model[] $models
-     * @return $this
+     * @param $class
+     * @param $callback
+     * @return ModelCollection
      */
-    public function save(Model ...$models);
+    public function getListUsingCallback($class, $callback)
+    {
+        $callback($query = $this->fluorite->selectFrom($class::getTableName()));
 
-    /**
-     * Deletes models from database.
-     *
-     * @param Model[] $models
-     * @return $this
-     */
-    public function delete(Model ...$models);
+        return (new ModelCollection($query->all()))->map([$class, "hydrate"]);
+    }
 }
